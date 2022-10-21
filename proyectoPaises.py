@@ -96,24 +96,47 @@ class Bandera:
         soup = BeautifulSoup(html_text, 'html.parser')
         self.filtrar(soup)
 
-    def ejecutar(self):
-        numero=randint(0,len(self.banderas)-1)
-        print(self.banderas[numero]["Bandera"])
 
-        urllib.request.urlretrieve(self.banderas[numero]["Bandera"],"gfg.jpg")
+    def comprobacion(self):
+        if self.entry.get()!='':
+            resultado=self.entry.get()
+            print(self.banderas[self.numero]["Pais"])
+            if resultado.upper()==self.banderas[self.numero]["Pais"]:
+                print("Has acertado")
+            else:
+                print("Has fallado")
+                print("Era: "+self.banderas[self.numero]["Pais"])
+        else:
+            print("Introduzca algo.")
+
+
+    def metodo(self):
+        self.numero=randint(0,len(self.banderas)-1)
+        print(self.banderas[self.numero]["Bandera"])
+
+        urllib.request.urlretrieve(self.banderas[self.numero]["Bandera"],"gfg.jpg")
 
         image1 = PIL.Image.open("gfg.jpg")
         test = ImageTk.PhotoImage(image1)
 
-        label1 = Label(self.window,image=test)
-        label1.image = test
-        label1.place(x=10, y=20)
-        pais=input("Escribe el pais:")
+        self.label1 = Label(self.window,image=test)
+        self.label1.image = test
+        self.label1.place(x=10, y=20)
+
+        self.entry=Entry()
+        self.entry.place(x=350,y=80)
+
+        button = Button(text="Compruebe el resultado", command=self.comprobacion)
+        button.place(x=350, y=120)
+        '''pais=input("Escribe el pais:")
         print(self.banderas[numero]["Pais"])
         if pais.upper()==self.banderas[numero]["Pais"]:
             print("Has acertado")
         else:
-            print("Has fallado")
+            print("Has fallado")'''
 
+    def ejecutar(self):
+        self.label1.place_forget()
+        self.metodo()
 if __name__=="__main__":
     a=10

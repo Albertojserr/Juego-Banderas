@@ -13,11 +13,11 @@ if __name__=="__main__":
     Label(window, text="¿De dónde es esta bandera?",bg=color,fg="black").pack()
     band=Bandera(window)
     b=Button(window, text="Siguiente", command=band.ejecutar)
-    b.place(x=400,y=30)
+    b.place(x=350,y=160)
     for url in band.urls:
         band.crear(url)
-    
-    band.ejecutar()
+
+    band.metodo()
     '''urllib.request.urlretrieve("https://www.banderasdelmundo.net/wp-content/uploads/2019/08/bandera-de-yibuti-300x200.jpg","gfg.jpg")
     #ejecutar(window)
     image1 = Image.open("gfg.jpg")
