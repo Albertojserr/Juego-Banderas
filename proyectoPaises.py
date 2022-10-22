@@ -11,6 +11,8 @@ class Bandera:
     def __init__(self,window):
         self.banderas=[]
         self.window=window
+
+        self.window.protocol("WM_DELETE_WINDOW", self.punt)
         self.puntuacion=0
         url_eu = 'https://www.banderasdelmundo.net/banderas-paises-de-europa/'#funciona
         url_suram='https://www.banderasdelmundo.net/banderas-de-los-paises-de-sudamerica/'#funciona
@@ -68,6 +70,8 @@ class Bandera:
     def punt(self):
         messagebox.showinfo(message="Tienes "+str(self.puntuacion)+" puntos", title="Resultado")
 
+        self.window.destroy()
+
     def metodo(self):
         self.numero=randint(0,len(self.banderas)-1)
         print(self.banderas[self.numero]["Bandera"])
@@ -87,17 +91,11 @@ class Bandera:
         button = Button(text="Compruebe el resultado", command=self.comprobacion)
         button.place(x=350, y=120)
 
-        button = Button(text="Compruebe la puntuación", command=self.punt)
-        button.place(x=350, y=160)
-        '''pais=input("Escribe el pais:")
-        print(self.banderas[numero]["Pais"])
-        if pais.upper()==self.banderas[numero]["Pais"]:
-            print("Has acertado")
-        else:
-            print("Has fallado")'''
+        button = Button(text="Terminar el juego", command=self.punt)
+        button.place(x=350, y=200)
 
     def ejecutar(self):
         self.label1.place_forget()
         self.metodo()
 if __name__=="__main__":
-    a=10
+    print("Ejecuta el otro archivo")

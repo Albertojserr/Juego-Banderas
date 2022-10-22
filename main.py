@@ -11,7 +11,7 @@ if __name__=="__main__":
     Label(window, text="¿De dónde es esta bandera?",bg=color,fg="black").pack()
     band=Bandera(window)
     b=Button(window, text="Siguiente", command=band.ejecutar)
-    b.place(x=350,y=200)
+    b.place(x=350,y=160)
     for url in band.urls:
         band.crear(url)
 
